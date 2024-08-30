@@ -30,10 +30,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/PaulKokhanov1/BindingofIssacRemake">
-    <img src="https://github.com/PaulKokhanov1/BindingofIssacRemake/assets/69466838/ba8440ae-6b1a-46b4-ab17-50452ff0718b" alt="Logo" width="280" height="200">
+   ![image](https://github.com/user-attachments/assets/dce53734-200f-46e3-8a0e-e861c4b9be89)
+
+
+
   </a>
 
-<h3 align="center">Binding of Issac Remake</h3>
+<h3 align="center">Fishing Simulator</h3>
 
   <p align="center">
     Being that a huge goal of mine is to pursue game development, whether professionally or personally, I need to establish a strong fundamental basis. Thus, I made a goal to re-create one of my all-time favourite games "The Binding of Issac".
