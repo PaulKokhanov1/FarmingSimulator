@@ -30,9 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/PaulKokhanov1/BindingofIssacRemake">
-   ![image](https://github.com/user-attachments/assets/dce53734-200f-46e3-8a0e-e861c4b9be89)
-
-
+    <img src="https://github.com/user-attachments/assets/75dbb687-e784-4154-bfd2-4cda963b26d3" alt="Logo" width="280" height="200">
 
   </a>
 
