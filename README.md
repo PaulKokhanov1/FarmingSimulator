@@ -37,11 +37,7 @@
 <h3 align="center">Fishing Simulator</h3>
 
   <p align="center">
-    Being that a huge goal of mine is to pursue game development, whether professionally or personally, I need to establish a strong fundamental basis. Thus, I made a goal to re-create one of my all-time favourite games "The Binding of Issac".
-    <br />
-    <a href="https://store.steampowered.com/app/113200/The_Binding_of_Isaac/"><strong>See the Game »</strong></a>
-    <a href="https://paul-kokhanov.itch.io/binding-of-issac-remake"><strong>Play My Game! »</strong></a>
-    <br />
+    While still on the game dev journey, I noticed after talking to other developers they mentioned to also explore Unreal Engine 5 and C++, having previous knowledge of C++, I wanted to make a more technical feature/game while learning Unreal Engine 5.
   </p>
 </div>
 
@@ -52,28 +48,24 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#goal">Goal</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li><a href="#history">History</a></li>
-    <li><a href="#about-my-implementation">About My Implementation</a></li>
-    <li><a href="#obstacles-and-observations">Obstacles and Observations</a></li>
-    <li><a href="#next-steps">Next Steps</a></li>
+    <li><a href="#genetic-algorithm">Genetic Algorithm</a></li>
+    <li><a href="#game-design">Game Design</a></li>
     <li><a href="#bugs">Bugs</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
-## Important Note
-Due to my barely passable drawing skills alot of the sprites for the re-creation were taken from the original game "The Binding of Issac: Rebirth". I used an online website that posted these extracted sprites, hence all creditation goes to those wonderful individuals 
-who took the time to extract the various arts pieces of the game. https://www.spriters-resource.com/pc_computer/bindingofisaacrebirth/ 
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- GOAL -->
+## Goal
 <div align="center">
   <a href="https://github.com/PaulKokhanov1/LunarLanderRL">
     
@@ -92,9 +84,8 @@ My desire was to evolve my understanding of game development and coding using C#
 
 ### Built With
 
-* [![CSharp][CSharp.com]][CSharp-url]
-* [![Unity][Unity.com]][Unity-url]
-* [![Gimp][Gimp.com]][Gimp-url]
+* [![C++][Cpp.com]][Cpp-url]
+* [![Unreal Engine 5][Unreal.com]][Unreal-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -388,10 +379,10 @@ Project Link: [https://github.com/PaulKokhanov1/BindingofIssacRemake](https://gi
 [React-url]: https://reactjs.org/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
+[Unreal.com]: https://img.shields.io/badge/Unreal_Engine_5-blue?style=for-the-badge&logo=unrealengine&logoColor=black
+[unreal-url]: https://www.unrealengine.com/en-US/unreal-engine-5
+[Cpp.com]: https://img.shields.io/badge/C%2B%2B-white?style=for-the-badge&logo=cplusplus&logoColor=blue
+[Cpp-url]: https://isocpp.org/
 [CSharp.com]: https://img.shields.io/badge/C%23-%23512BD4?style=for-the-badge&logo=csharp&logoColor=white
 [CSharp-url]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit
 [Unity.com]: https://img.shields.io/badge/unity-0769AD?style=for-the-badge&logo=unity&logoColor=white
