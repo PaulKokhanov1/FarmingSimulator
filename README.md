@@ -140,7 +140,7 @@ In this section, I’d like to briefly explain a couple bugs within the game and
 
 Paul Kokhanov - [Website](https://paulkokhanov.com/) - paul.kokhanov@gmail.com
 
-Project Link: [https://github.com/PaulKokhanov1/BindingofIssacRemake](https://github.com/PaulKokhanov1/BindingofIssacRemake)
+Project Link: [https://github.com/PaulKokhanov1/FarmingSimulator](https://github.com/PaulKokhanov1/FarmingSimulator)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,8 +149,8 @@ Project Link: [https://github.com/PaulKokhanov1/BindingofIssacRemake](https://gi
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Spriters Resource](https://www.spriters-resource.com/pc_computer/bindingofisaacrebirth/)
-* [The Binding of Issac](https://store.steampowered.com/app/113200/The_Binding_of_Isaac/)
+* [GGameDev](https://www.youtube.com/watch?v=dS5AUaYFcdw&ab_channel=GGameDev)
+* [Cooperative & Adaptive Algorithms Course](https://uwaterloo.ca/academic-calendar/undergraduate-studies/catalog#/courses/view/65ce3a9ed3ef75325eb08133)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
