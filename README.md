@@ -127,6 +127,40 @@ That’s really all there is to know about SGA and this should give you a better
 
 ### Implementation/How it works
 
+Now onto the meat and potatoes. In my game I really wanted to leverage my knowledge of algorithms and C++ to make a technical “game” whilst also keeping it simple enough to learn UE5 without overwhelming myself. Just like in my overview, I will go through each component of the GA and then mention brief pseudocode to explain the algorithm.
+
+Firstly, the whole use of the genetic algorithm in my game was to develop an ecosystem depending on the “season”. So, I’d specify a season out of 4 possible candidates (for example, summer, fall, winter, spring) and then there would be an “ideal” fish for that season. An “ideal” fish would be one with specific traits, like color, size, speed, etc… , then the algorithm would slowly generate generations of solutions until the ideal solution is found. Thus my “fitness” function was simply calculating the absolute difference between the found and optimal solution. I adjusted the “tick” method within the pre-defined Unreal “Character” class to manage how often new generations were generated. Having said this, in order to expand the possible sample space and the possible fish’s I needed to use a real number representation method.
+
+**Representation**: I used numbers 0 to 9 to represent each “gene/chromosome”, and the overall solution consisted of 6 concatenated digits. The 6 gene’s represented the following traits: Color, Size, Speed, Trait, Type, Intelligence. I was really struggling to think of features of fish as you can probably guess by me including “intelligence” of a fish. Anyways, Size, Speed and Intelligence mapped each digit to a float value between a range of 0 to 5.0, while Color, Trait and Type were mapped to specific strings. An example of a “trait” was “Aggressive”, and an example of a “type” was “Barracuda”. 
+
+**Parent Selection**: In this implementation I opted for a tournament selection method as this removed premature convergence due to no one solution dominating the probability space of always being selected to be a parent. Rather in tournament selection, we use rank-based selection. The way I created this selection was by first choosing 100 random solutions from my population, then sorting them based on rank (which is determined by the fitness), selecting the top 50 to then be later used to create the offspring. 
+
+**Recombination**: I opted to use the simple arithmetic crossover strategy as I was dealing with a real-valued genetic algorithm. The simple arithmetic crossover method is as follows: having parents <x_1, x_2, …> & <y_1, y_2,…> starting from a random gene (k) we produce the 1st child as so, 
+
+![image](https://github.com/user-attachments/assets/cbfe36d3-ee7f-44ef-ad38-52ca26581acd)
+
+And then reversed for the 2nd child. As an example,
+
+![image](https://github.com/user-attachments/assets/8e4c6443-207b-40ea-a231-3586579162b2)
+
+**Mutation**: Analogous to the method used in SGA (i.e bit-flipping) the method I used (called: Uniform Mutation) is randomly drawing a value from a predetermined interval (which in my case was digits 0 -> 9) and replacing that gene with a specified probability, which in my case was a value of 0.8 (or 80%).
+
+**Survivor Selection**: Nothing too fancy, I decided to select the next generation based on fitness instead of replacing all the older generation with the newer one. In this fashion I was able to retain the best individuals from older generations while discarding poor candidates from the offspring.
+
+**Initialization**: I randomly generated a population of solutions by choosing random values for each gene of the solution from the digits 0 to 9. My Terminal conditions were once the best individual did not change for a predetermined amount of generations then the algorithm would stop iterating.
+
+Now to give a brief overview of the pseudocode:
+1. Generate 150 solutions by concatenating 6 randomly chosen digits 
+- Find fitness immediately for each solution
+2. While not meeting terminal conditions:
+- Sort current generation of solutions
+- Select Parents using Tournament Selection, selecting 100 random solutions
+- Sort the 100 solutions and choose top 50
+- Using top 50, generate two child using simple arithmetic crossover per randomly selected pair (different combination each time)
+- Mutate each child with a probability of altering any one gene of 80%
+- Select survivors from Parents and offspring based on their fitness
+Overall, I think this was an interesting way to implement some of the knowledge gained from one of my classes into a field that I love to explore, so even though it was not the most complex thing, I think it allowed me to demonstrate my C++ and algorithms knowledge while also giving me time to learn how to use UE5.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
