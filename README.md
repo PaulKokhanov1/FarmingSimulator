@@ -1,5 +1,4 @@
 # FarmingSimulator
- Genetic Algorithm Based Fishing Simulator
 
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
@@ -92,9 +91,33 @@ My desire was to evolve my understanding of game development and coding using C#
 <!-- GENETIC ALGORITHM -->
 ## Genetic Algorithm
 
-
+Within this section I will discuss the premise of a genetic algorithm, their use and a general overview of how to implement one. Then I will move on to explaining how I used a genetic algorithm in my fishing simulator.
 
 ### Overview
+
+To begin, what is the premise of a GA? Essentially its based off of Darwin’s theory of evolution that encompasses how we evolve through a process of natural selection. Individuals who are typically the best at “competing” for a specific resources and adapting to environmental conditions are seen as favorable and then are chosen to evolve the lineage. In computer science, we use the idea of natural selection to evolve our solutions to a global optima.
+Generally, genetic algorithms are a method for solving optimization problems by maintaining a population of candidate solutions and evolving them by applying a set of stochastic operators. Typically this process is continued until certain terminal conditions are met. GA’s are usually a good idea when you are looking for exact or approximate solutions to optimization or search problems. They allow for parallelism, they can provide multiple optimal solutions and are able to handle large search spaces, which is especially great in machine learning applications.
+Now without going super in depth of the types of GA’s and all the various ways to implement one, we will stick with the original/first GA known as “Simple Genetic Algorithm” or SGA for short, developed in 1975.
+Firstly, as mentioned before, GA’s hold a population of solutions from which individuals are chosen and “evolved” through the use of search operators (i.e, Recombination and Mutation), and SGA is no exception. The general scheme is as follows,
+
+![image](https://github.com/user-attachments/assets/ac302ba1-7fa3-4d11-bc51-91e55a95be32)
+
+We’ll briefly discuss each part by focusing on the below table,
+
+![image](https://github.com/user-attachments/assets/9c5c6d4c-fc02-4e76-81bd-61b8a16979b5)
+
+To start with **representation**, we need to encode a vector, ex: a solution from the parameter domain to the binary domain. To use “fancy” terms, we’d abstract the representation of the Phenotype to a genotype (i.e parameter -> Binary). Each “chromosome” (the individual bit) indicates the presence or absence of a feature, obviously this would not work out for features that may have more complex encoding’s and hence there are methods to represent our solutions using digits instead.
+Moving onto **Parent Selection** (disregard the fact that I am straying from the order of the table). Now in order to quantify how good a solution is or isn’t we use a “fitness” function, Basically just think of it as a function that you plug in your solution to measure how close it is to your desired outcome. For example, we could have a function of some graph and we want to find variables x,y,z that yield the lowest value when plugged into that function, hence that is our “fitness” function. “Parent’s” (i.e solutions that are used to create new and better solutions) are selected proportionally to their fitness, so better fitness equals better chance of being selected. There are different methods to go about fitness proportional selection such as the ”roulette wheel technique” or “Baker’s Stochastic Universal Sampling algorithm” but ultimately they accomplish the same thing with certain pros and cons.
+Then we proceed onto **Recombination**, which is where all the magic happens… , it’s the place where the storks get the babies to deliver to the parents. They’re different process to create offspring but in the case of binary representation we stick with 3 types: 1-point crossover, N-point crossover and Uniform Crossover, the latter being the most common. In Uniform crossover, for each gene we flip a fair coin (i.e 50/50 chance) to determine which parent the child inherits that specific chromosome. Then after going through each gene of child 1 we then make an inverse copy for the second child. See image below,
+
+![image](https://github.com/user-attachments/assets/22539214-e4d6-4bdb-ad90-743be1d5905e)
+
+**Mutation**, here is where we change the offspring to introduce “exploitation” into our algorithm, basically to potentially introduce small diversions that were not in the sample space given by the parents. With a pre-determined probability, we alter each gene (just flip the bit). The probability is usually set between 1/population_size and 1/chromosome_length.
+Next up is **Survivor Selection**. 2 main approaches are used: Age-Based Selection, where it follows a FIFO idea, basically out with the old, in with the new and then Fitness-Based Selection, where the next generation is determined via each solutions “goodness”.
+Now a couple things that I did not cover yet is **initialization** and **terminal conditions**. Initialization is done randomly, basically just generating random solutions or using simple search algorithms such as Depth-iterative search or Breath-first search. Then terminal conditions could be anything you really want, but common ones are: specified number of generation are reached, no improvement in the best individual for a specified number of generations or memory/time constraints
+That’s really all there is to know about SGA and this should give you a better understanding of how I used a variation of SGA in my fishing simulator.
+
+
 
 ### Implementation/How it works
 
