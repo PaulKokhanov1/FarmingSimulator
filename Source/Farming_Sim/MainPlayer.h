@@ -24,6 +24,7 @@ class UTextBlock;
 class UFishCaughtWidget;
 class AFishingSphere;
 class AFishingBuoy;
+class UAnimSequence;
 
 UCLASS()
 class FARMING_SIM_API AMainPlayer : public ACharacter
@@ -63,6 +64,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
 	FVector GetCastingStartLocation();
 
+
+	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
+	void MovementAnimationHandling();
+
 	void HideFisingWidget();
 	void RemoveBuoy();
 
@@ -75,6 +80,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Player|Fishing")
 	float MaxCastDistance = 700.0f;		//the furthest the line can go
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UAnimSequence> MoveAnimation;
 
 
 	UFUNCTION(BlueprintCallable, Category = "Player|Fishing")

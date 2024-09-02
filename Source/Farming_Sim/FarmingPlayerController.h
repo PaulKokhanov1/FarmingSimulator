@@ -15,6 +15,7 @@ class UEnhancedInputLocalPlayerSubsystem;
 class UInputMappingContext;
 class UCameraComponent;
 
+
 /**
  * 
  */
@@ -51,6 +52,8 @@ public:
 	// The Input Mapping Context to use while player is waiting for fish
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
 	UInputMappingContext* InputMappingContentFishing = nullptr;
+
+
 
 	UFUNCTION()
 	void SetInputDefault(const bool Enabled = true) const;

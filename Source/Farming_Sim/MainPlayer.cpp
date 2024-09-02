@@ -10,6 +10,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Farming_Sim/FishingSphere.h"
 #include "Farming_Sim/FishingBuoy.h"
+#include "Animation/AnimSequence.h"
+
 
 
 
@@ -56,6 +58,13 @@ void AMainPlayer::CatchFish()
 FVector AMainPlayer::GetCastingStartLocation()
 {
 	return GetActorLocation() + (GetActorForwardVector() * 150) + FVector(0, 0, 50);
+}
+
+void AMainPlayer::MovementAnimationHandling()
+{
+	if (MoveAnimation) {
+		GetMesh()->PlayAnimation(MoveAnimation, true);
+	}
 }
 
 void AMainPlayer::HideFisingWidget()

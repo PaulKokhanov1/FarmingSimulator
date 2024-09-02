@@ -118,6 +118,7 @@ void AFarmingPlayerController::HandleMove(const FInputActionValue& InputActionVa
 	if (PlayerCharacter) {
 		PlayerCharacter->AddMovementInput(PlayerCharacter->GetActorForwardVector(), MovementVector.Y);
 		PlayerCharacter->AddMovementInput(PlayerCharacter->GetActorRightVector(), MovementVector.X);
+		//PlayerCharacter->MovementAnimationHandling();
 	}
 }
 
