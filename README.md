@@ -167,7 +167,11 @@ Anyways, lets layout the scope of this project:
 
 Working from here, I started by first creating the genetic algorithm, as described above. Next, I worked on simple character movement and handling inputs. Then, there was the line casting mechanic which projects a forward moving bubble that changes to green whenever you are over a position that is able to be “fished” in. Also changing input context mappings to an input mapping handling the “fishing and catching” part. Finally, creating and updating a widget to display the fish’s features once you’ve caught a fish. This may be confusing so see the below video for a good reference,
 
-[Include Video of full game mechanic]
+
+
+https://github.com/user-attachments/assets/cabd2bc1-abaa-4e53-b3da-cad5d0a4e3e0
+
+
 
 **Input Handling**: To manage inputs, movement and “fishing Stamina”, I used the enhanced input system provided by UE5, this involved declaring the appropriate UPROPERTY input actions and Input mapping context within a C++ Player Controller class and then making the necessary Input Action’s and Input Mapping Context modules within the editor. After assigning the modules to the class references, I would bind all possible input actions to an EnhancedInputComponent and create the needed classes to handle each input. Furthermore, to avoid removing specific input actions or rebinding individual keys, I created a couple input context mappings that allowed me to easily change between different key bindings depending on whether I was in the process of “waiting to catch a fish” or simply moving around and casting the line. For example, whilst “waiting to catch a fish” using the spacebar would reel in your line to “catch” the fish, however this was the same button used to cast the reel in the first place. Thus, to avoid needing to remap that specific key binding, which through C++ was not necessary the easiest given the limited documentation, I instead simply changed the input mapping context.
 
