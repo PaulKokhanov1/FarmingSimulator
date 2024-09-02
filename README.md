@@ -54,7 +54,6 @@
     </li>
     <li><a href="#genetic-algorithm">Genetic Algorithm</a></li>
     <li><a href="#game-design">Game Design</a></li>
-    <li><a href="#bugs">Bugs</a></li>
     <li><a href="#next-steps">Next Steps</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -192,21 +191,14 @@ Working from here, I started by first creating the genetic algorithm, as describ
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- BUGS -->
-## Bugs
-
-In this section, I’d like to briefly explain a couple bugs within the game and possible solutions that may or may not work.
-
-### Player getting stuck between rooms
-
-
-
-### Tears immediately being destroyed when shooting when player is at the top wall
-
-
-
 <!-- NEXT STEPS -->
 ## Next Steps
+
+When considering next steps there really isn’t any limitation to what I would add, heck if I had the time, lets make the next Stardew Valley haha… unless. But realistically, to keep the scope reasonable here are a couple features I intend to create.
+
+**Catching a fish indicator**: As of now, the player is able to catch a fish each time they reel in their cast. Obviously this doesn’t make much of a game, but the overall goal of this project was to learn unreal while also using my technical knowledge of algorithms. But excuses aside, my proposal for this next feature is as follows, Once a player casts their line and the buoy appears, there will be a constant bobbing animation. Once the buoy submerges fully underwater is when the player will need to reel their line for a high chance of catching a fish, say for example 90 %, otherwise the chance would be low, around 10%. 
+
+**Power-ups**: Due to the already implemented stamina meter and drainage and regeneration, I’d like to expand on this idea to bring more “pace” to the simulator. For example, power-ups to manage spending less stamina per throw, faster regeneration or slower depletion, maybe even higher chances of catching an “optimal” fish. For example, in the latter case, instead of taking a random solution from the current generation we would instead take a solution from the top 10 or top 20.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -215,6 +207,7 @@ In this section, I’d like to briefly explain a couple bugs within the game and
 <!-- CONCLUSION -->
 ## Conclusion
 
+Overall, being that this was my first “solo” project, in the sense of not having any reference to go off of, unlike my Binding of Issac remake, this game was a success. I was not only able to learn the basic/fundamentals of Unreal Engine’s C++ capabilities but also learn about the editor and the ways that this engine relates to Unity. I got to put into practice an interesting topic I learned from one of my courses in school, whilst also demonstrating my C++ abilities. As I continue to apply for internships and game development jobs, I think this small game will be an interesting topic to add to a resume or to bring up in a conversation. I hope you all enjoyed reading my little blurb about the game, I wish you all the best 😊.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
