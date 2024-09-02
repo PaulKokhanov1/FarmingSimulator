@@ -63,17 +63,8 @@
 
 <!-- GOAL -->
 ## Goal
-<div align="center">
-  <a href="https://github.com/PaulKokhanov1/LunarLanderRL">
-    
 
-https://github.com/PaulKokhanov1/BindingofIssacRemake/assets/69466838/954386dc-9e36-4cc6-b870-c5261d8ef890
-
-
-  </a>
-</div>
-
-My desire was to evolve my understanding of game development and coding using C# by building from scratch the popular dungeon crawler game "The Binding of Issac"
+My intentions with this project was to create a simple fishing mechanic that can be used in various 3D games and can easily be expanded whilist using my knowledge of genetic algorithms to create an ecosystem within the game. I also really wanted to get familiar with Unreal Engine and how to integrate direct C++ coding into the workflow.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
