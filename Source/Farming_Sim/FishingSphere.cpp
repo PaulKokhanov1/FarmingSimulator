@@ -15,12 +15,13 @@ AFishingSphere::AFishingSphere()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
+
+	//Creating Projectile Component
 	SphereMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere Mesh"));
 	RootComponent = SphereMesh;
 
 	SphereComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Sphere Component"));
 	SphereMesh->SetMobility(EComponentMobility::Movable);
-	//UPrimitiveComponent::IgnoreActorWhenMoving(, true);
 }
 
 // Called when the game starts or when spawned
@@ -28,7 +29,7 @@ void AFishingSphere::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SphereMesh->OnComponentBeginOverlap.AddDynamic(this, &AFishingSphere::OnOverlapStart);	//Looks at AFishingSphere is overlapping and call OnoverlapStart
+	SphereMesh->OnComponentBeginOverlap.AddDynamic(this, &AFishingSphere::OnOverlapStart);	//Looks at if AFishingSphere is overlapping and call OnoverlapStart
 	SphereMesh->OnComponentEndOverlap.AddDynamic(this, &AFishingSphere::OnOverlapEnd);
 	
 }
@@ -54,13 +55,6 @@ void AFishingSphere::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* O
 
 }
 
-
-// Called every frame
-void AFishingSphere::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
 
 bool AFishingSphere::GetoverlappingFishingLocation()
 {

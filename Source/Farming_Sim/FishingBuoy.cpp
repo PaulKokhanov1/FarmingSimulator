@@ -3,7 +3,7 @@
 
 #include "Farming_Sim/FishingBuoy.h"
 
-// Sets default values
+// Used solely as an Actor that is adjusted in the editor
 AFishingBuoy::AFishingBuoy()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -11,17 +11,4 @@ AFishingBuoy::AFishingBuoy()
 
 }
 
-// Called when the game starts or when spawned
-void AFishingBuoy::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AFishingBuoy::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
 

@@ -10,9 +10,11 @@ AFishingCharacter::AFishingCharacter()
 	SetActorTickInterval(5.0f);
 	SetActorTickEnabled(true);
 
-	//FOR NOW SET SEASON HERE BUT IDEALLY SET IT IN  EDITOR
+	//FOR NOW SET SEASON HERE BUT IDEALLY SET IT IN EDITOR, used to change which fish type is "optimal"
 	season = 1;
 	
+
+	//Genetic Algo Parameters
 	n_100 = 100;
 	top_50 = 50;
 	alpha = 0.7;

@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "FishCaughtWidget.generated.h"
 
+//Forward Declarations
 class UTextBlock;
 class AFishingCharacter;
 
@@ -42,7 +43,7 @@ public:
 	void UpdateText();
 
 
-	//Needs to be a SoftObjectPtr because the we can't set a hard reference to a level actor from a Widget that doesn't exist in the level yet, also I set this in the editor
+	//Needs to be a SoftObjectPtr because we can't set a hard reference to a level actor from a Widget that doesn't exist in the level yet, also I set this in the editor
 	UPROPERTY(EditAnywhere, Category = "Algorithm")
 	TSoftObjectPtr<AFishingCharacter> FishAlgorithm;
 

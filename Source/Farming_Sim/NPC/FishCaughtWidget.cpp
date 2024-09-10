@@ -26,21 +26,19 @@ void UFishCaughtWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
     }
 }
 
+
+/// <summary>
+/// Function Used for updating the text of the widget to show unique type of fish user has caught
+/// </summary>
 void UFishCaughtWidget::UpdateText()
 {
+    //ensure each trait is populated
 	if (!FishColor || !FishSize || !FishSpeed || !FishTrait || !FishType || !FishIntelligence) return;
 
 	int32 RandomValue = FMath::RandRange(0, 9);	//Just getting random value from top 10 solutions 
 
-    //FString FormattedString = FString::Printf(TEXT("Rank: %f , Solution: %d %d %d %d %d %d"),
-    //    FishAlgorithm->FishGASolutions[RandomValue].rank,
-    //    FishAlgorithm->FishGASolutions[RandomValue].solution[0],
-    //    FishAlgorithm->FishGASolutions[RandomValue].solution[1],
-    //    FishAlgorithm->FishGASolutions[RandomValue].solution[2],
-    //    FishAlgorithm->FishGASolutions[RandomValue].solution[3],
-    //    FishAlgorithm->FishGASolutions[RandomValue].solution[4],
-    //    FishAlgorithm->FishGASolutions[RandomValue].solution[5]);
 
+    //Assigning each string the appropriate value
     FString FishColorString = FishAlgorithm->ColorMap[FishAlgorithm->FishGASolutions[RandomValue].solution[0]];
     FString FishSizeString = FishAlgorithm->SizeMap[FishAlgorithm->FishGASolutions[RandomValue].solution[1]];
     FString FishSpeedString = FishAlgorithm->SpeedMap[FishAlgorithm->FishGASolutions[RandomValue].solution[2]];

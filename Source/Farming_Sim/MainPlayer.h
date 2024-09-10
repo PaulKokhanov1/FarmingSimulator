@@ -7,6 +7,7 @@
 #include "MainPlayer.generated.h"
 
 
+// Unused at the moment
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FFloatStatUpdated,
 	float, OldValue,
 	float, NewValue,
@@ -45,29 +46,6 @@ public:
 
 	FDroppedFishingLocation CastingRelease;
 
-	//TEMPORARY FUNCTION JUST FOR TESTING
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	void CatchFish();
-
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	void Fish();
-
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	void CastFishingLine(float DeltaTime);
-
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	bool ReleaseFishingLine();
-
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	FVector GetFishingBuoyReleaseLocation();
-
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	FVector GetCastingStartLocation();
-
-
-	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
-	void MovementAnimationHandling();
-
 	void HideFisingWidget();
 	void RemoveBuoy();
 
@@ -84,6 +62,32 @@ public:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UAnimSequence> MoveAnimation;
 
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AFishingSphere> SphereActor;
+
+	TObjectPtr<AFishingSphere> FishingSphere;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AFishingBuoy> BuoyActor;
+
+	TObjectPtr<AFishingBuoy> BuoyObject;
+
+	//TEMPORARY FUNCTION JUST FOR TESTING
+	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
+	void CatchFish();
+
+	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
+	void CastFishingLine(float DeltaTime);
+
+	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
+	bool ReleaseFishingLine();
+
+	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
+	FVector GetFishingBuoyReleaseLocation();
+
+	UFUNCTION(BlueprintCallable, Category = "Player|Fishing", meta = (AllowPrivateAccess = "true"))
+	FVector GetCastingStartLocation();
 
 	UFUNCTION(BlueprintCallable, Category = "Player|Fishing")
 	void SetFishing(bool IsFishing);
@@ -117,29 +121,16 @@ public:
 
 	#pragma endregion
 
+		// Called every frame
+		virtual void Tick(float DeltaTime) override;
+
+		// Called to bind functionality to input
+		virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<AFishingSphere> SphereActor;
-
-	TObjectPtr<AFishingSphere> FishingSphere;
-
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<AFishingBuoy> BuoyActor;
-
-	TObjectPtr<AFishingBuoy> BuoyObject;
 
 private:
 

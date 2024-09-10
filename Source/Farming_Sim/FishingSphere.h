@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "FishingSphere.generated.h"
 
+
+//Forward Declarations
 class UProjectileMovementComponent;
 class UMaterial;
 
@@ -14,13 +16,20 @@ UCLASS()
 class FARMING_SIM_API AFishingSphere : public AActor
 {
 	GENERATED_BODY()
-
-	//EHandleBlockingHitResult HandleBlockingHit(const FHitResult& Hit, float TimeTick, const FVector& MoveDelta, float& SubTickTimeRemaining) override;
-	//void HandleImpact(const FHitResult& Hit, float TimeSlice = 0.f, const FVector& MoveDelta = FVector::ZeroVector) override;
 	
 public:	
 	// Sets default values for this actor's properties
 	AFishingSphere();
+
+	bool GetoverlappingFishingLocation();
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UStaticMeshComponent> SphereMesh;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UProjectileMovementComponent> SphereComponent;
+
+	void ChangeMaterialColor(UMaterial* Material);
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,19 +41,6 @@ protected:
 	UFUNCTION()
 	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	bool GetoverlappingFishingLocation();
-
-	UPROPERTY(EditAnywhere)
-	TObjectPtr<UStaticMeshComponent> SphereMesh;
-
-	UPROPERTY(EditAnywhere)
-	TObjectPtr<UProjectileMovementComponent> SphereComponent;
-
-	void ChangeMaterialColor(UMaterial* Material);
 
 private:
 	UPROPERTY(EditAnywhere)

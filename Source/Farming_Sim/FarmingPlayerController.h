@@ -9,6 +9,7 @@
 #include "GameFramework/PlayerController.h"
 #include "FarmingPlayerController.generated.h"
 
+//Forward Declarations
 class AMainPlayer;
 class UEnhancedInputComponent;
 class UEnhancedInputLocalPlayerSubsystem;
@@ -25,33 +26,33 @@ class FARMING_SIM_API AFarmingPlayerController : public APlayerController
 
 
 public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
-	UInputAction* ActionMove = nullptr;
+
+	//INPUT ACTIONS
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
-	UInputAction* ActionLook = nullptr;
+	TObjectPtr<UInputAction> ActionMove = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
+	TObjectPtr<UInputAction> ActionLook = nullptr;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
-	UInputAction* ActionFish = nullptr;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Testing Input")
-	UInputAction* ActionTest = nullptr;
+	TObjectPtr<UInputAction> ActionFish = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Fishing Input")
-	UInputAction* ActionCatchFish = nullptr;
+	TObjectPtr<UInputAction> ActionCatchFish = nullptr;
 
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|UI")
-	UInputAction* ActionCloseUI = nullptr;
+	TObjectPtr<UInputAction> ActionCloseUI = nullptr;
 
-	// The Input Mapping Context to use.
+	// Default Input Mapping Context.
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
-	UInputMappingContext* InputMappingContent = nullptr;
+	TObjectPtr<UInputMappingContext> InputMappingContent = nullptr;
 
 
 	// The Input Mapping Context to use while player is waiting for fish
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input|Character Movement")
-	UInputMappingContext* InputMappingContentFishing = nullptr;
+	TObjectPtr<UInputMappingContext> InputMappingContentFishing = nullptr;
 
 
 
@@ -78,10 +79,8 @@ protected:
 
 	void HandleLook(const FInputActionValue& InputActionValue);
 	void HandleMove(const FInputActionValue& InputActionValue);
-	void HandleFish();
 	void CastLine();
 	void UnCastLine();
-	void HandleTest();
 	void CatchFish();
 	void CloseUI();
 

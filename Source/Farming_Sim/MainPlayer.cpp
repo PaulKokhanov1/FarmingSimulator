@@ -20,12 +20,11 @@ AMainPlayer::AMainPlayer()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	//SetActorTickInterval(0.5f);
 	SetActorTickEnabled(true);
 	TimeSinceLastUpdate = 0.0f;
 	CastDistance = 0.0f;
 
-
+	//Setting Up Camera
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>("Spring Arm");
 	SpringArm->SetupAttachment(RootComponent);
 	SpringArm->bUsePawnControlRotation = false;
@@ -37,14 +36,11 @@ AMainPlayer::AMainPlayer()
 	bUseControllerRotationYaw = true;
 	GetCharacterMovement()->bOrientRotationToMovement = false;
 
-
-
-
 }
 
+//Called once player releases "SpaceBar"
 void AMainPlayer::CatchFish()
 {
-	//TObjectPtr
 	wdgFishInfo->SetVisibility(ESlateVisibility::Visible);
 
 	wdgFishInfo->UpdateText();
@@ -60,12 +56,7 @@ FVector AMainPlayer::GetCastingStartLocation()
 	return GetActorLocation() + (GetActorForwardVector() * 150) + FVector(0, 0, 50);
 }
 
-void AMainPlayer::MovementAnimationHandling()
-{
-	if (MoveAnimation) {
-		GetMesh()->PlayAnimation(MoveAnimation, true);
-	}
-}
+
 
 void AMainPlayer::HideFisingWidget()
 {
@@ -85,31 +76,7 @@ FVector AMainPlayer::GetFishingBuoyReleaseLocation()
 }
 
 
-void AMainPlayer::Fish()
-{
-	FVector Start = GetActorLocation();
-	FVector End = GetActorForwardVector() *4000 ;
-
-	if (!bIsFishing && currentFishingStamina > fishingThrowStaminaCost) {
-		DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 10, 0, 5);
-		bHasFished = true;
-		ToggleFishing();			// So that everytime the player presses the fishing action they either enable it or disable it
-		GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_None);
-	}
-	else if (currentFishingStamina < fishingThrowStaminaCost) {
-		SetFishing(false);
-		GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Walking);
-
-	}
-	else {
-		ToggleFishing();
-		GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Walking);
-
-	}
-
-}
-
-
+// Used to Move Sphere Actor in direction of the cast
 void AMainPlayer::CastFishingLine(float DeltaTime)
 {
 	if (FishingSphere) {
@@ -149,8 +116,6 @@ bool AMainPlayer::ReleaseFishingLine()
 		return false;
 
 	}
-	 
-
 }
 
 void AMainPlayer::SetFishing(bool IsFishing)
@@ -225,7 +190,7 @@ void AMainPlayer::Tick(float DeltaTime)
 	{
 		// How has fishing affected the stamina
 		// First we set the recharge rate to a default value 
-		// then alter ti depending on whether the player threw the rod or is currently fishing
+		// then alter it depending on whether the player threw the rod or is currently fishing
 
 		float actualFishingStaminaRechargeRate = fishingRechargeRate;
 
@@ -245,7 +210,7 @@ void AMainPlayer::Tick(float DeltaTime)
 			OnFishingStaminaChanged.Broadcast(previousFishingStamina, currentFishingStamina, maxFishingStamina);
 		}
 
-		// Reset the flags indicating physical exertion
+		// Reset the flags to not constantly remove throwing stamina after initial toss
 		bHasFished = false;
 
 		//If player is still fishing while stamina runs out and reanable ability to walk

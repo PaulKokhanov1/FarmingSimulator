@@ -50,11 +50,6 @@ void AFarmingPlayerController::OnPossess(APawn* aPawn)
 			&AFarmingPlayerController::UnCastLine);
 	}
 
-	if (ActionTest) {
-		EnhancedInputComponent->BindAction(ActionTest, ETriggerEvent::Triggered, this,
-			&AFarmingPlayerController::HandleTest);
-	}
-
 	if (ActionCatchFish) {
 		EnhancedInputComponent->BindAction(ActionCatchFish, ETriggerEvent::Triggered, this,
 			&AFarmingPlayerController::CatchFish);
@@ -76,7 +71,10 @@ void AFarmingPlayerController::OnUnPossess()
 }
 
 
-
+/// <summary>
+/// Manages Setting or removing the Default Input Mapping Context
+/// </summary>
+/// <param name="Enabled"></param>
 void AFarmingPlayerController::SetInputDefault(const bool Enabled) const
 {
 	if (Enabled && InputSubsystem) {
@@ -87,6 +85,11 @@ void AFarmingPlayerController::SetInputDefault(const bool Enabled) const
 	}
 }
 
+
+/// <summary>
+/// Manages Setting or removing the Fishing Input Mapping Context
+/// </summary>
+/// <param name="Enabled"></param>
 void AFarmingPlayerController::SetInputFishing(const bool Enabled) const
 {
 	if (Enabled && InputSubsystem) {
@@ -118,18 +121,9 @@ void AFarmingPlayerController::HandleMove(const FInputActionValue& InputActionVa
 	if (PlayerCharacter) {
 		PlayerCharacter->AddMovementInput(PlayerCharacter->GetActorForwardVector(), MovementVector.Y);
 		PlayerCharacter->AddMovementInput(PlayerCharacter->GetActorRightVector(), MovementVector.X);
-		//PlayerCharacter->MovementAnimationHandling();
 	}
 }
 
-void AFarmingPlayerController::HandleFish()
-{
-
-	if (PlayerCharacter) {
-		PlayerCharacter->Fish(); 
-		//GEngine->AddOnScreenDebugMessage(-1, 0.49f, FColor::Silver,*(FString::Printf(TEXT("Player Has fished"))));
-	}
-}
 
 void AFarmingPlayerController::CastLine()
 {
@@ -148,27 +142,20 @@ void AFarmingPlayerController::CastLine()
 
 void AFarmingPlayerController::UnCastLine()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 0.49f, FColor::Silver, *(FString::Printf(TEXT("Player Has Realed in the line"))));
+	GEngine->AddOnScreenDebugMessage(-1, 0.49f, FColor::Silver, *(FString::Printf(TEXT("Player Has Reeled in the line"))));
 	if (PlayerCharacter) {
 		PlayerCharacter->SetFishing(false);
 
+		//If statement used for the case the player releases the "Spacebar" while within fishing area
 		if (PlayerCharacter->ReleaseFishingLine()) {
 			//will switch the input mapping context
 			SetInputDefault(false);
-			SetInputFishing();	//HAVE TO REMEMBER TO RESTORE DEFAULT MAPPING AFTER CATHCING FISH
+			SetInputFishing();
 		}
 
 	}
 }
 
-
-void AFarmingPlayerController::HandleTest()
-{
-
-	if (PlayerCharacter) {
-		PlayerCharacter->CatchFish();
-	}
-}
 
 void AFarmingPlayerController::CatchFish()
 {
@@ -176,6 +163,7 @@ void AFarmingPlayerController::CatchFish()
 		PlayerCharacter->CatchFish();
 		PlayerCharacter->RemoveBuoy();
 	}
+	//Move back to default Input Mapping Context
 	SetInputFishing(false);
 	SetInputDefault();
 
